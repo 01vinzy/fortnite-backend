@@ -28,3 +28,8 @@ php artisan key:generate
 ```bash
 php artisan serve
 ```
+
+### get stats.
+go to `/stats/{username}` route to get stats.
+example: `http://localhost:8000/stats/zebthewizard`
+example: `http://localhost:8000/stats/gushyz`
