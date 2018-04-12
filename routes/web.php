@@ -11,12 +11,26 @@
 |
 */
 
-use App\Api\Facades\Api;
+use App\Log;
+use App\User;
 
 
-$router->get('/stats/{username}', function ($username) use ($router) {
-    $user = Api::getUserByUsername($username);
-    return response()->json(Api::getUserInfo([
-      "id" => $user->id
-    ]));
+
+$router->get('/stats/{username}', 'MainController@AllStats');
+$router->get('/stats/{platform}/{username}', 'MainController@PlatformStats');
+$router->get('/history/{username}', 'MainController@AllHistory');
+
+$router->get('/test', function () {
+      $users = User::get();
+
+      foreach($users as $user) {
+        Log::make(1, "kernel", "Attempted Update: $user->username");
+        // $username = rawurlencode($user->username);
+        // $url = url() . "/stats/$username";
+        
+        // req([
+        //   "method" => "get",
+        //   "url" => $url
+        // ]);
+      }
 });

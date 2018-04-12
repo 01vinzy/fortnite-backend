@@ -28,6 +28,8 @@ $app->withFacades();
 $app->withEloquent();
 
 $app->configure('api');
+$app->configure('platforms');
+$app->configure('modes');
 
 /*
 |--------------------------------------------------------------------------
